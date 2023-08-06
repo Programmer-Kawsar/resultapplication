@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>result applicaton</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- serch form start -->
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-lg-3">
+          <a href="/admin.html">
+            <button type="submit" class="btn btn-primary">
+              Go to Admin Dashboard
+            </button>
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header text-center fw-bold">
+              <div class="card-titile">Search Your Result</div>
+            </div>
+            <div class="card-body">
+              <form action="" id="search-result">
+                <div class="d-flex">
+                  <input
+                    class="form-control me-1"
+                    type="text"
+                    placeholder="Type your roll number"
+                    name="roll"
+                  />
+                  <input
+                    class="form-control mx-1"
+                    type="text"
+                    placeholder="Type your reg number"
+                    name="reg"
+                  />
+                  <button class="btn btn-primary ms-1">Search</button>
+                </div>
+              </form>
+            </div>
+            <div class="card-footer">
+              <div class="search-error-message"></div>
+            </div>
+          </div>
+          <div class="text-center d-none loader-image">
+            <img class="w-25" src="assets/images/loader.gif" alt="" />
+          </div>
+        </div>
+        <div class="col-lg-3"></div>
+      </div>
+    </div>
+    <!-- serch form end -->
+
+    <!-- result show table start -->
+    <div class="container d-none mt-5" id="main-result-sheet">
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+          <div class="card">
+            <div class="card-header text-center fw-bold">
+              <div class="card-titile">Your Mark Sheet</div>
+            </div>
+            <div class="card-body" id="dynamic-basic-info">
+              <div class="contianer">
+                <div class="row align-items-center justify-content-between">
+                  <div class="col-lg-7">
+                    <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr class="text-center">
+                          <th colspan="2">Your Basic Info</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="fw-bold">
+                          <td>Name:</td>
+                          <td
+                            style="text-transform: capitalize"
+                            class="st-name"
+                          >
+                            Kawsar Ahamed
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Roll:</td>
+                          <td class="st-roll">545458</td>
+                        </tr>
+                        <tr>
+                          <td>Reg:</td>
+                          <td class="st-reg">545458545</td>
+                        </tr>
+                        <tr>
+                          <td>Result:</td>
+                          <td><strong class="st-passed">Passed</strong></td>
+                        </tr>
+                        <tr>
+                          <td>GPA:</td>
+                          <td class="st-cgpa">5</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-lg-5 text-end">
+                    <img class="w-50 h-75 result-image align-middle" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer" id="dynamic-result-info">
+              <div class="card-header text-center fw-bold">
+                <div class="card-title">Grade Sheet</div>
+              </div>
+              <table class="table table-bordered table-striped mt-2">
+                <thead>
+                  <tr class="text-center">
+                    <th>Code</th>
+                    <th>Subject Name</th>
+                    <th>Marks</th>
+                    <th>Letter Grade</th>
+                    <th>Grade Point</th>
+                    <th>GPA</th>
+                    <th>Grade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center">
+                    <td>101</td>
+                    <td>Bangla</td>
+                    <td class="bn-marks">100</td>
+                    <td class="bn-grade">A+</td>
+                    <td class="bn-gpa">5</td>
+                    <td class="align-middle total-gpa" rowspan="7">3.50</td>
+                    <td class="align-middle total-grade" rowspan="7">A+</td>
+                  </tr>
+                  <tr class="text-center">
+                    <td>102</td>
+                    <td>English</td>
+                    <td class="en-marks">90</td>
+                    <td class="en-grade">A+</td>
+                    <td class="en-gpa">5</td>
+                  </tr>
+                  <tr class="text-center">
+                    <td>103</td>
+                    <td>Math</td>
+                    <td class="ma-marks">90</td>
+                    <td class="ma-grade">A+</td>
+                    <td class="ma-gpa">5</td>
+                  </tr>
+                  <tr class="text-center">
+                    <td>104</td>
+                    <td>Science</td>
+                    <td class="sc-marks">90</td>
+                    <td class="sc-grade">A+</td>
+                    <td class="sc-gpa">5</td>
+                  </tr>
+                  <tr class="text-center">
+                    <td>105</td>
+                    <td>Chemistry</td>
+                    <td class="ch-marks">90</td>
+                    <td class="ch-grade">A+</td>
+                    <td class="ch-gpa">5</td>
+                  </tr>
+                  <tr class="text-center">
+                    <td>106</td>
+                    <td>Physics</td>
+                    <td class="ph-marks">90</td>
+                    <td class="ph-grade">A+</td>
+                    <td class="ph-gpa">5</td>
+                  </tr>
+                  <tr class="text-center">
+                    <td>107</td>
+                    <td>Religion</td>
+                    <td class="re-marks">90</td>
+                    <td class="re-grade">A+</td>
+                    <td class="re-gpa">5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-1"></div>
+      </div>
+    </div>
+    <!-- result show table end -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/funtcions.js"></script>
+    <script src="assets/js/index.js"></script>
+  </body>
+</html>
