@@ -81,5 +81,5 @@ setTimeout(()=>{
 
 const gotoAdmindashboard = document.querySelector(".go-to-admindashboard");
 gotoAdmindashboard.onclick = () => {
-    window.location.href = "/admin.html";
+    window.location.href = "admin.html";
 }

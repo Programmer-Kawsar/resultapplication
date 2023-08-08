@@ -299,3 +299,9 @@ singleForm.onsubmit = (e) => {
 };
 // Result View funtion end
 
+
+
+const goTofrontEnd =  document.querySelector(".go-to-front-end");
+goTofrontEnd.onclick=()=>{
+  window.location.href="index.html";
+}
