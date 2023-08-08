@@ -79,3 +79,7 @@ setTimeout(()=>{
 }
 
 
+const create = document.querySelector(".create");
+create.onclick = () => {
+    window.location.href = "admin.html";
+}
