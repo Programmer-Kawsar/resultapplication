@@ -301,7 +301,7 @@ singleForm.onsubmit = (e) => {
 
 
 
-const goTofrontEnd =  document.querySelector(".go-to-front-end");
+const goTofrontEnd =  document.querySelector(".go-to-frontend");
 goTofrontEnd.onclick=()=>{
   window.location.href="index.html";
 }
