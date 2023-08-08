@@ -81,5 +81,24 @@ setTimeout(()=>{
 
 const gotoAdmindashboard = document.querySelector(".go-to-admindashboard");
 gotoAdmindashboard.onclick = () => {
-    window.location.href = "admin.html";
+    const blankWindow = window.open('about:blank');
+    setTimeout(() => {
+        blankWindow.location.href = "admin.html";
+    }, 50); 
 }
+
+
+
+const print = document.querySelector(".print");
+const printed = document.querySelector(".remove-print");
+print.onclick = () => { 
+   printed.classList.add("d-none");
+   print.classList.add("d-none");
+
+    window.print();
+    setTimeout(()=>{
+        printed.classList.remove("d-none");
+        print.classList.remove("d-none");
+    },50)
+}
+
