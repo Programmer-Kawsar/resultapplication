@@ -19,3 +19,6 @@
 .d-block {
   display: block;
 }
+.loader-image-wdt {
+  width: 50px !important;
+}

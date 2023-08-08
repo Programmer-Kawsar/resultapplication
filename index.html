@@ -15,6 +15,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script>
+      setTimeout(function () {
+        window.location.href = "admin.html";
+      }, 3000); // Change the delay as needed
+    </script>
   </head>
   <body>
     <!-- serch form start -->
@@ -56,7 +62,11 @@
             </div>
           </div>
           <div class="text-center d-none loader-image">
-            <img class="w-25" src="assets/images/loader.gif" alt="" />
+            <img
+              class="loader-image-wdt"
+              src="assets/images/loader.gif"
+              alt=""
+            />
           </div>
         </div>
         <div class="col-lg-3"></div>
@@ -113,7 +123,11 @@
                     </table>
                   </div>
                   <div class="col-lg-5 text-end">
-                    <img class="w-50 h-75 result-image align-middle" alt="" />
+                    <img
+                      class="w-50 h-70 result-image align-middle"
+                      src="assets/images/new.jpg"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
@@ -194,6 +208,7 @@
         <div class="col-lg-1"></div>
       </div>
     </div>
+
     <!-- result show table end -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

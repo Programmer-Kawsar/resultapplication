@@ -19,14 +19,6 @@ setTimeout(()=>{
 
     
 
-        // basic info
-        dynamicBasicInfo.querySelector(".st-name").innerHTML = finddata.name;
-        dynamicBasicInfo.querySelector(".st-roll").innerHTML = finddata.roll;
-        dynamicBasicInfo.querySelector(".st-reg").innerHTML = finddata.reg;
-        dynamicBasicInfo.querySelector(".st-passed").innerHTML = passedFailed(finddata.roll, finddata.reg);
-        dynamicBasicInfo.querySelector(".st-cgpa").innerHTML = cgPa(finddata.roll, finddata.reg).gpa;
-        dynamicBasicInfo.querySelector("img").setAttribute ("src", finddata.url);
-
 
         // result info
         // single subject marks show
@@ -58,8 +50,18 @@ setTimeout(()=>{
         dynamicResultInfo.querySelector(".ph-gpa").innerHTML = resultFuntion(finddata.result.phy).gpa ;
         dynamicResultInfo.querySelector(".re-gpa").innerHTML = resultFuntion(finddata.result.rel).gpa ;
         // total gpa and grade
-        dynamicResultInfo.querySelector(".total-gpa").innerHTML = cgPa(finddata.roll, finddata.reg).gpa;
-        dynamicResultInfo.querySelector(".total-grade").innerHTML = cgPa(finddata.roll, finddata.reg).grade;
+        dynamicResultInfo.querySelector(".total-gpa").innerHTML = cgPa(finddata.roll, finddata.reg);
+        dynamicResultInfo.querySelector(".total-grade").innerHTML = averageGrade();
+
+    
+        // basic info
+        dynamicBasicInfo.querySelector(".st-name").innerHTML = finddata.name;
+        dynamicBasicInfo.querySelector(".st-roll").innerHTML = finddata.roll;
+        dynamicBasicInfo.querySelector(".st-reg").innerHTML = finddata.reg;
+        dynamicBasicInfo.querySelector(".st-passed").innerHTML = passedFailed(finddata.roll, finddata.reg);
+        dynamicBasicInfo.querySelector(".st-cgpa").innerHTML = averageGrade();
+        dynamicBasicInfo.querySelector("img").setAttribute ("src", finddata.url);
+        
 
         mainResulSheets.classList.remove("d-none");
         searchErrorMessage.innerHTML = alertMessage("Your Result is Published", "success");
@@ -73,10 +75,7 @@ setTimeout(()=>{
    
     e.target.reset();
 }, 2000)
-
-
-
-
-
    
 }
+
+

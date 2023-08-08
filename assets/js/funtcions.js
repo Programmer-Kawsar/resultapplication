@@ -79,9 +79,14 @@ function generateID(idLength) {
 
 // result data number valid function start
 const isresult = (num)=>{
-  const pattern = /^[0-9]{2}$/;
-  return pattern.test(num);
+  const pattern = /^[0-9]{1,3}$/;
+  if (pattern.test(num)) {
+    const integerValue = parseInt(num, 10);
+    return integerValue >= 0 && integerValue <= 100;
+  }
+
 };
+
 // result data number valid function end
 
 // result funtion start
@@ -124,76 +129,77 @@ return {
 
 // index.html funtion start
 
+// CGPA funtion start
+
+
+let returnGpa;
+let cgPa = (roll, reg) => {
+  const getData = getDatals("students"); // Assuming getDatals is a valid function that retrieves student data.
+  const perCgpaData = getData.find((item) => item.roll === roll && item.reg === reg);
+
+  const studentData = {
+  result: {
+    ban: perCgpaData.result.ban,
+    eng: perCgpaData.result.eng,
+    mat: perCgpaData.result.mat,
+    sci: perCgpaData.result.sci,
+    che: perCgpaData.result.sci,
+    phy: perCgpaData.result.phy,
+    rel: perCgpaData.result.rel,
+  }
+};
+  const subjects = ['ban', 'eng', 'mat', 'sci', 'che', 'phy', 'rel'];
+  let totalGPA = 0;
+
+  for (const subject of subjects) {
+    totalGPA += resultFuntion(studentData.result[subject]).gpa;
+  }
+
+  const averageGPA = totalGPA / subjects.length;
+   returnGpa =  averageGPA.toFixed(2); 
+  
+  return returnGpa;
+
+};
+
+const averageGrade = () => {
+  if (returnGpa >= 1 && returnGpa < 2) {
+    return "D";
+  } else if (returnGpa >= 2 && returnGpa < 3) {
+    return "C";
+  } else if (returnGpa >= 3 && returnGpa < 3.5) {
+    return "B";
+  } else if (returnGpa >= 3.5 && returnGpa < 4) {
+    return "A-";
+  } else if (returnGpa >= 4 && returnGpa < 5) {
+    return "A";
+  } else if (returnGpa === "5.00") {
+    return "A+"; // Comparing with a string since toFixed returns a string
+  } else {
+    return "F";
+  }
+}
+// CGPA funtion end
+
 // result funtion start
 const passedFailed = (roll, reg) => {
   const getData = getDatals("students"); // Assuming getDatals is a function that fetches data
-  const PerData = getData.find((item) => item.roll === roll && item.reg === reg); // Use reg instead of "reg" 
-  if (PerData) {
-   const totalMarks = parseInt(PerData.result.ban) + parseInt(PerData.result.eng) + parseInt(PerData.result.mat) + parseInt(PerData.result.sci) + parseInt(PerData.result.che) + parseInt(PerData.result.phy) + parseInt(PerData.result.rel)
-  const finalResult = totalMarks / 7; // Assuming there are 7 subjects 
- 
-  if (finalResult >= 33) {
-    return "Passed";
-  } else {
-    return "Failed";
-  }
-  }else{
-    return "not found";
-  }
-  
-};
+  const PerData = getData.find((item) => item.roll === roll && item.reg === reg);
 
-// CGPA funtion start
-
-const cgPa = (roll, reg) => {
-  const getData = getDatals("students"); // Assuming getDatals is a valid function that retrieves student data.
-  const perCgpaData = getData.find((item) => item.roll === roll && item.reg === reg);
-  
-  if (perCgpaData) {
-    const totalMarks = parseInt(perCgpaData.result.ban) + parseInt(perCgpaData.result.eng) + parseInt(perCgpaData.result.mat) + parseInt(perCgpaData.result.sci) + parseInt(perCgpaData.result.che) + parseInt(perCgpaData.result.phy) + parseInt(perCgpaData.result.rel);
-    const mark = totalMarks / 7;
-    let grade = "";
-    let gpa = "";
-    
-    if (mark > 0 && mark <= 32) {
-      grade = "F";
-      gpa = 0.00;
-    } else if (mark >= 33 && mark <= 39) {
-      grade = "D";
-      gpa = 1.00;
-    } else if (mark >= 40 && mark <= 49) {
-      grade = "C";
-      gpa = 2.00;
-    } else if (mark >= 50 && mark <= 59) {
-      grade = "B";
-      gpa = 3.00;
-    } else if (mark >= 60 && mark <= 69) {
-      grade = "A-";
-      gpa = 3.50;
-    } else if (mark >= 70 && mark <= 79) {
-      grade = "A";
-      gpa = 4.00;
-    } else if (mark >= 80 && mark <= 100) {
-      grade = "A+";
-      gpa = 5.00;
-    } else {
-      grade = "Invalid grade";
-      gpa = "Invalid GPA";
-    }
-    
-    return {
-      grade,
-      gpa
-    };
+  if (
+    PerData.result.ban >= 33 &&
+    PerData.result.eng >= 33 &&
+    PerData.result.mat >= 33 &&
+    PerData.result.sci >= 33 &&
+    PerData.result.che >= 33 &&
+    PerData.result.phy >= 33 &&
+    PerData.result.rel >= 33
+  ) {
+    return `<h4 style="color: green; font-size: 16px; font-weight: bold">Passed</h4>`;
   } else {
-    return "CGPA not found";
+    return `<h4 style="color: red; font-size: 16px; font-weight: bold">Failed</h4>`;
   }
 };
-
-// CGPA funtion end
-
-
-
 
 // result funtion end
 
@@ -201,5 +207,7 @@ const cgPa = (roll, reg) => {
 
 
 
-
 // index.html funtion end
+
+
+
