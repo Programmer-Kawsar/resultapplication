@@ -79,7 +79,7 @@ setTimeout(()=>{
 }
 
 
-const create = document.querySelector(".create");
-create.onclick = () => {
+const gotoAdmindashboard = document.querySelector(".go-to-admindashboard");
+gotoAdmindashboard.onclick = () => {
     window.location.href = "/admin.html";
 }
