@@ -15,15 +15,16 @@ searchResult.onsubmit = (e) => {
    
 
 setTimeout(()=>{
-    if (finddata.result===null){
+
+
+    if (finddata) {
+        if (finddata.result===null){
         searchErrorMessage.innerHTML = alertMessage("Your Result is Not Published Try Again Later", "warning");
         setTimeout(()=>{
             searchErrorMessage.innerHTML= "";
           },2000)
     }else{
-        if (finddata) {
-  
-            // result info
+         // result info
             // single subject marks show
             dynamicResultInfo.querySelector(".bn-marks").innerHTML = finddata.result.ban;
             dynamicResultInfo.querySelector(".en-marks").innerHTML = finddata.result.eng;
@@ -68,12 +69,10 @@ setTimeout(()=>{
     
             mainResulSheets.classList.remove("d-none");
             searchErrorMessage.innerHTML = alertMessage("Your Result is Published", "success");
-   
-        }else{
-            searchErrorMessage.innerHTML = alertMessage("Please input correct Roll and Reg", "danger");
-        }
-        
     }
+    }else{
+        searchErrorMessage.innerHTML = alertMessage("Please input correct Roll and Reg", "danger");
+    } 
     loaderImage.classList.add("d-none");
    
     e.target.reset();
