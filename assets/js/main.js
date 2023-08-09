@@ -68,7 +68,9 @@ const singleStudent =(id)=>{
 const studentOldData =  getDatals("students");
 const SingleView = studentOldData.find((data)=> data.id == id);
 
-singleStudentModal.innerHTML = `
+let singleResult = SingleView.result===null ? `<span class="text-danger text-center">Please input result</span>`: `${cgPa(SingleView.roll, SingleView.reg)}`
+
+  singleStudentModal.innerHTML = `
 <div class="d-flex justify-content-around align-items-center">
               <img
                 style="
@@ -85,12 +87,13 @@ singleStudentModal.innerHTML = `
                <tr><td><h6><strong>Name: ${SingleView.name}</strong></h6></td></tr>
                <tr><td><h6>Roll: ${SingleView.roll}</h6></td></tr>
                <tr><td><h6>Reg: ${SingleView.reg}</h6></td></tr>
-               <tr><td><h6>GPA: ${cgPa(SingleView.roll, SingleView.reg)}</h6></td></tr>
+               <tr><td><h6>GPA: ${singleResult} </h6></td></tr>
                </table>
               </div>
             </div>
 `
 }
+
 // show single view student funtions end
 
 // delete single data funtion start
@@ -266,7 +269,7 @@ const addResult = (id) => {
                   addresultMessage.innerHTML= "";
                 },1500)
        }else if (!isresult(data.ban) || !isresult(data.eng) || !isresult(data.mat) || !isresult(data.sci) || !isresult(data.che) || !isresult(data.phy) ||  !isresult(data.rel)) {
-                addresultMessage.innerHTML=  alertMessage("Please input maximum 2 digit result number", "warning");
+                addresultMessage.innerHTML=  alertMessage("Please input maximum 100 marks", "warning");
                 setTimeout(()=>{
                   addresultMessage.innerHTML= "";
                 },1500)
@@ -352,8 +355,9 @@ singleForm.onsubmit = (e) => {
 // Result View funtion end
 
 
-
+// bom object for multipul page start
 const goTofrontEnd =  document.querySelector(".go-to-frontend");
 goTofrontEnd.onclick=()=>{
   window.location.href="index.html";
 }
+// bom object for multipul page end
