@@ -85,7 +85,7 @@ singleStudentModal.innerHTML = `
                <tr><td><h6><strong>Name: ${SingleView.name}</strong></h6></td></tr>
                <tr><td><h6>Roll: ${SingleView.roll}</h6></td></tr>
                <tr><td><h6>Reg: ${SingleView.reg}</h6></td></tr>
-               <tr><td><h6>Result: GPA 5</h6></td></tr>
+               <tr><td><h6>GPA: ${cgPa(SingleView.roll, SingleView.reg)}</h6></td></tr>
                </table>
               </div>
             </div>
@@ -117,10 +117,19 @@ const data = Object.fromEntries(form_data.entries())
 
 if (!data.name || !data.reg || !data.roll) {
     showAlert.innerHTML= alertMessage("All fields are required", "warning");
+    setTimeout(()=>{
+      showAlert.innerHTML= "";
+    },1500)
 }else if (!isNumber(data.roll)) {
     showAlert.innerHTML=  alertMessage("Please input maximum 6 digit roll number", "warning");
+    setTimeout(()=>{
+      showAlert.innerHTML= "";
+    },1500)
 } else if (!isNumber(data.reg)) {
     showAlert.innerHTML=  alertMessage("Please input maximum 6 digit reg number", "warning");
+    setTimeout(()=>{
+      showAlert.innerHTML= "";
+    },1500)
 } else{
   const oldData =  getDatals("students");
   // roll and reg
@@ -128,8 +137,14 @@ if (!data.name || !data.reg || !data.roll) {
   const regvalidation= oldData.some((item)=> item.reg === data.reg);
   if (rollvalidation) {
     showAlert.innerHTML=  alertMessage("Roll no already exists, Please try another Roll no", "warning");
+    setTimeout(()=>{
+      showAlert.innerHTML= "";
+    },1500)
   } else if(regvalidation){
     showAlert.innerHTML=  alertMessage("Reg no already exists, Please try another Reg no", "warning");
+    setTimeout(()=>{
+      showAlert.innerHTML= "";
+    },1500)
   } else{
 
     const oldstudent =  getDatals("students");
@@ -142,6 +157,9 @@ if (!data.name || !data.reg || !data.roll) {
    
     sendDatals("students", oldstudent);
     showAlert.innerHTML=  alertMessage(`<strong>${data.name} </strong>has been added successfully`, "success");
+    setTimeout(()=>{
+      showAlert.innerHTML= "";
+    },1500)
     e.target.reset()
 };
 }
@@ -171,10 +189,19 @@ const singleEditDataStudent= (id)=>{
     const data = Object.fromEntries(form_data.entries())
   if (!data.name || !data.reg || !data.roll) {
     editMessage.innerHTML= alertMessage("All fields are required", "warning");
+    setTimeout(()=>{
+      editMessage.innerHTML= "";
+    },1500)
   } else if (!isNumber(data.roll)) {
     editMessage.innerHTML=  alertMessage("Please input maximum 6 digit roll number", "warning");
+    setTimeout(()=>{
+      editMessage.innerHTML= "";
+    },1500)
   } else if (!isNumber(data.reg)) {
     editMessage.innerHTML=  alertMessage("Please input maximum 6 digit reg number", "warning");
+    setTimeout(()=>{
+      editMessage.innerHTML= "";
+    },1500)
   }else{
     const oldstudent =  getDatals("students");
     const findIndexdata = oldData.findIndex((data)=>data.id === id);
@@ -187,11 +214,17 @@ const singleEditDataStudent= (id)=>{
             "Roll number already exists, Please try another Roll number",
             "warning"
           );
+          setTimeout(()=>{
+            editMessage.innerHTML= "";
+          },1500)
         } else if (isRegNumberTaken) {
           editMessage.innerHTML = alertMessage(
             "Reg number already exists, Please try another Reg number",
             "warning"
           );
+          setTimeout(()=>{
+            editMessage.innerHTML= "";
+          },1500)
         } else {
           oldData[findIndexdata] = { ...oldData[findIndexdata] , ...data};
           sendDatals("students", oldData);
@@ -200,6 +233,9 @@ const singleEditDataStudent= (id)=>{
            ` <strong>${oldData[findIndexdata].name}</strong> has been update data successfully`,
             "success"
           );
+          setTimeout(()=>{
+            editMessage.innerHTML= "";
+          },1500)
       }    
     }
   }
@@ -225,13 +261,22 @@ const addResult = (id) => {
           const data = Object.fromEntries(form_data.entries());
           if (!data.ban || !data.eng || !data.mat || !data.sci || !data.che || !data.phy || !data.rel
             ) {
-        addresultMessage.innerHTML= alertMessage("All fields are required", "warning");
+                addresultMessage.innerHTML= alertMessage("All fields are required", "warning");
+                setTimeout(()=>{
+                  addresultMessage.innerHTML= "";
+                },1500)
        }else if (!isresult(data.ban) || !isresult(data.eng) || !isresult(data.mat) || !isresult(data.sci) || !isresult(data.che) || !isresult(data.phy) ||  !isresult(data.rel)) {
-          addresultMessage.innerHTML=  alertMessage("Please input maximum 2 digit result number", "warning");
+                addresultMessage.innerHTML=  alertMessage("Please input maximum 2 digit result number", "warning");
+                setTimeout(()=>{
+                  addresultMessage.innerHTML= "";
+                },1500)
          } else if (singleStudent) {
           singleStudent.result = data;
           sendDatals("students", oldData);
-           addresultMessage.innerHTML = alertMessage(`<strong>${singleStudent.name}</strong> has been add result successfully`, "success");  
+              addresultMessage.innerHTML = alertMessage(`<strong>${singleStudent.name}</strong> has been add result successfully`, "success");
+              setTimeout(()=>{
+                addresultMessage.innerHTML= "";
+              },1500) 
            showAllstudent();        
           e.target.reset();
       }
@@ -244,8 +289,6 @@ const addResult = (id) => {
 
 
 // Result View funtion start
-
-
 
 const singleResulshowModal = document.getElementById("single-result-show-modal");
 const singleForm = document.getElementById("single-form");
@@ -272,9 +315,15 @@ singleForm.onsubmit = (e) => {
   const form_data = new FormData(e.target);
   const data = Object.fromEntries(form_data.entries());
  if (!data.ban || !data.eng || !data.mat || !data.sci || !data.che || !data.phy || !data.rel) {
-  alert("all fields are required");
+  resultUpdatemessage.innerHTML= alertMessage("All fields are required", "warning");
+  setTimeout(()=>{
+    resultUpdatemessage.innerHTML= "";
+  },1500)
  } else if ( !isresult(data.ban) || !isresult(data.eng) || !isresult(data.mat) || !isresult(data.sci) || !isresult(data.che) || !isresult(data.phy) ||  !isresult(data.rel)) {
-  resultUpdatemessage.innerHTML= alertMessage("Please input maximum 2 digit result number", "warning");
+  resultUpdatemessage.innerHTML= alertMessage("Please input maximum 100 marks", "warning");
+  setTimeout(()=>{
+    resultUpdatemessage.innerHTML= "";
+  },1500)
  } else{
   const oldData = getDatals("students");
   const findIndexdata = oldData.findIndex((item) => item.id === id); // Corrected to data.id
@@ -293,6 +342,9 @@ singleForm.onsubmit = (e) => {
   resultUpdatemessage.innerHTML = alertMessage(
     `<strong>${oldData[findIndexdata].name}</strong> has been update result successfully`, "success"
   );
+  setTimeout(()=>{
+    resultUpdatemessage.innerHTML= "";
+  },1500)
  }
   
 };
